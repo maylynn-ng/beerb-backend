@@ -36,7 +36,7 @@ export class ConfigService {
       password: this.getValue('DB_PASSWORD'),
       database: this.getValue('DB_DB'),
       entities: ['**/*.entity{.ts,.js}'],
-      //add migrations
+      //TODO: add migrations
       ssl: this.isProduction(),
     };
   }
