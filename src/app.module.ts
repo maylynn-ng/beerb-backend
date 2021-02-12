@@ -1,12 +1,25 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './controllers/app.controller';
-import { AppService } from './services/app.service';
+import { BadgeController } from './badge/badge.controller';
 import { BeerController } from './beer/beer.controller';
-import { LocationController } from './location/location.controller';
+import { AppService } from './services/app.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { PSQL } from './config';
+import { ConfigService } from './config/config.service';
 
 @Module({
-  imports: [],
-  controllers: [AppController, BeerController, LocationController],
-  providers: [AppService],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: PSQL.host,
+      port: PSQL.port,
+      username: PSQL.username,
+      password: PSQL.password,
+      database: PSQL.name,
+      entities: [],
+      synchronize: true,
+    }),
+  ],
+  controllers: [BadgeController, BeerController],
+  providers: [AppService, ConfigService],
 })
 export class AppModule {}
