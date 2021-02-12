@@ -16,6 +16,9 @@ lerna-debug.log*
 # Environment
 .env
 
+# Dev
+nodemon.json
+
 # Tests
 /coverage
 /.nyc_output
