@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Body } from '@nestjs/common';
 
 @Controller('beer')
 export class BeerController {
+  //TODO: talk about naming conventions: routes/controllers
   @Get('beers')
   getBeers(): string {
     return 'these are beers!';
@@ -17,12 +18,12 @@ export class BeerController {
     return 'find one random beer';
   }
 
-  @Post('drunkbeers')
+  @Post('drunkBeers') //TODO: change to camel case on frontend?
   getDrunkBeers(@Body() beerIdArray: number[]): string {
     return 'map array to find beers';
   }
 
-  @Post('favourite')
+  @Put('favourite')
   putNewFavourite(
     @Body() body: { UserId: number; favouriteBeers: number[] },
   ): string {

@@ -1,12 +1,19 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from '../services/app.service';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 
 @Controller()
 export class BadgeController {
-  constructor(private readonly appService: AppService) {}
+  @Get('getBadges')
+  getBadges(): string {
+    return 'find all badges';
+  }
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Post('inputBadges')
+  inputBadges(@Body() badge: { badgeObject: string }): string {
+    return 'create new badge';
+  }
+
+  @Post('awardBadge')
+  postNewBadge(@Body() body: { UserId: number; badge: string }): string {
+    return 'add user to this badge';
   }
 }
