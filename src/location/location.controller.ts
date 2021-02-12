@@ -1,4 +1,16 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 
 @Controller('location')
-export class LocationController {}
+export class LocationController {
+  @Post('location')
+  postLocation(
+    @Body() body: { UserId: number; location: {}; beer: number },
+  ): string {
+    return 'create location, set user to the beer';
+  }
+
+  @Post('locations')
+  getLocations(): string {
+    return 'find user info or create user';
+  }
+}
