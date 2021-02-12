@@ -1,13 +1,13 @@
-import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
-@Injectable()
+require('dotenv').config();
+
 export class ConfigService {
   constructor(private env: { [key: string]: string | undefined }) {}
 
   private getValue(key: string, throwOnMissing = true): string {
     const value = this.env[key];
-    if (!value && throwOnMissing) {
+    if (key !== 'DB_PASSWORD' && !value && throwOnMissing) {
       throw new Error(`config error - missing env.${key}`);
     }
     return value;
