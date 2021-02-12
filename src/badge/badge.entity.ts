@@ -1,4 +1,4 @@
-import { Entity, Column } from 'typeorm';
+import { Entity, Column, ManyToMany } from 'typeorm';
 
 @Entity()
 export class Badge {

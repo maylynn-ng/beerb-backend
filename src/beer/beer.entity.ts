@@ -11,10 +11,10 @@ export class Beer {
   @Column({ type: 'text', nullable: false })
   beerLabel: string;
 
-  @Column({ type: 'float', nullable: false })
+  @Column({ type: 'decimal', nullable: false })
   beerAbv: number;
 
-  @Column({ type: 'float', nullable: false })
+  @Column({ type: 'decimal', nullable: false })
   beerIbu: number;
 
   @Column({ type: 'text', nullable: false })
