@@ -5,10 +5,12 @@ import { LocationController } from './location/location.controller';
 import { AppService } from './services/app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { configService } from './config/config.service';
+import { LocationService } from './location/location.service';
+import { BeerService } from './beer/beer.service';
 
 @Module({
   imports: [TypeOrmModule.forRoot(configService.getTypeOrmConfig())],
   controllers: [BadgeController, BeerController, LocationController],
-  providers: [AppService],
+  providers: [AppService, LocationService, BeerService],
 })
 export class AppModule {}
