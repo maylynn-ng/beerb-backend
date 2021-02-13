@@ -1,11 +1,14 @@
 import { Controller, Get, Post, Put, Body } from '@nestjs/common';
+import { Beer } from './beer.entity';
+import { BeerService } from './beer.service';
 
 @Controller('beer')
 export class BeerController {
   //TODO: talk about naming conventions: routes/controllers
+  constructor(private readonly beerService: BeerService) {}
   @Get('beers')
-  getBeers(): string {
-    return 'these are beers!';
+  getBeers(): Promise<Beer[]> {
+    return this.beerService.findAll();
   }
 
   @Get('searchBeer/:id')
