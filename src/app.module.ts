@@ -7,10 +7,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { configService } from './config/config.service';
 import { LocationService } from './location/location.service';
 import { BeerService } from './beer/beer.service';
+import { UserService } from './user/user.service';
 
 @Module({
   imports: [TypeOrmModule.forRoot(configService.getTypeOrmConfig())],
   controllers: [BadgeController, BeerController, LocationController],
-  providers: [AppService, LocationService, BeerService],
+  providers: [AppService, LocationService, BeerService, UserService],
 })
 export class AppModule {}
