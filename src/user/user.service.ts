@@ -11,9 +11,9 @@ export class UserService {
   ) {}
 
   findUser(sub: string): Promise<User> {
-    return this.userRepository.findOne({
-      sub,
-      relations: ['beers', 'badges', 'locations'],
+    return this.userRepository.findOne(sub, {
+      relations: ['Location', 'Badge', 'Beer'],
+      order: { locations: 'DESC' },
     });
   }
 }
