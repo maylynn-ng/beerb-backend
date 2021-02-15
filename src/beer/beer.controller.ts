@@ -22,8 +22,8 @@ export class BeerController {
   }
 
   @Post('drunkBeers') //TODO: change to camel case on frontend?
-  getDrunkBeers(@Body() beerIdArray: number[]): string {
-    return 'map array to find beers';
+  getDrunkBeers(@Body() beerIdArray: number[]): Promise<Beer[]> {
+    return this.beerService.getDrunkBeers(beerIdArray);
   }
 
   @Put('favourite')
