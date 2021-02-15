@@ -12,9 +12,17 @@ export class LocationService {
     private userService: UserService,
   ) {}
 
-  async getLocations(): Promise<Location[]> {
+  async getLocations(body): Promise<Location[]> {
+    //TODO: double check should this be returning locations or user?
     try {
-      const userInfo = await this.userService.findUser(req.body.sub);
+      const userInfo = await this.userService.findUser(body.sub);
+      if (!userInfo) {
+        const newUser = await this.userService.createUser(body);
+        // newUser.dataValues['Locations'] = [];
+        // newUser.dataValues['Badges'] = [];
+        // newUser.dataValues['Beers'] = [];
+        return newUser.locations;
+      } else return userInfo.locations;
     } catch (err) {
       console.error('error fetching locations.. ', err);
     }

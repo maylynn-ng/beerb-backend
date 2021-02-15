@@ -16,4 +16,9 @@ export class UserService {
       order: { locations: 'DESC' },
     });
   }
+
+  createUser(userInput: { name: string }): Promise<User> {
+    //TODO: check userInput type
+    return this.userRepository.save(userInput);
+  }
 }

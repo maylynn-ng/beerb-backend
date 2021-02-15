@@ -10,7 +10,7 @@ export class LocationController {
   }
 
   @Post('locations')
-  getLocations(): string {
+  getLocations(@Body() body: { sub: string }): string {
     return 'find user info or create user';
   }
 }
