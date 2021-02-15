@@ -21,10 +21,10 @@ export class BeerService {
     }
   }
 
-  async getDrunkBeers(body: { beers: number[] }): Promise<Beer[]> {
+  async getDrunkBeers(beerIdArray): Promise<Beer[]> {
     try {
       return await Promise.all(
-        body.beers.map(async (id) => {
+        beerIdArray.map(async (id) => {
           const [beer] = await this.beerRepository.find({
             where: { beerId: id },
             select: ['beerId', 'beerName', 'beerLabel'],
